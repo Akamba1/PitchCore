@@ -18,6 +18,16 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),  # example of including app URLs under 'accounts/'
+    path('accounts/', include('accounts.urls')), 
 ]
 
+from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to PitchCore Platform!")
+
+urlpatterns = [
+    path('', home, name='home'),  # This makes http://127.0.0.1:8000/ work
+    path('accounts/', include('accounts.urls')),
+]
