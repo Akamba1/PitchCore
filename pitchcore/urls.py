@@ -13,21 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')), 
-]
-
-from django.urls import path, include
-from django.http import HttpResponse
-
-def home(request):
-    return HttpResponse("Welcome to PitchCore Platform!")
-
-urlpatterns = [
-    path('', home, name='home'),  # This makes http://127.0.0.1:8000/ work
-    path('accounts/', include('accounts.urls')),
+    path('', include('core.urls')),          # Home page and main app URLs
+    path('accounts/', include('accounts.urls')),  # User accounts URLs
 ]
